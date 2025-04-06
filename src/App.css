@@ -1,38 +1,210 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.body-container {
+  height: 100vh;
+  padding-left: 80px;
+}
+
+.header-container {
+  background-color: #ffffff;
+  min-height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;  
+  color: white;  
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);    
+}
+.header-container img {
+ padding-left: 80px;
+  height: 30px;
+  width: auto;  
+}
+.header-nav ul {
+  list-style: none;      
+  display: flex;
+  align-items: center;    
+}
+.header-nav li {
+  margin: 0 15px; 
+}
+.header-nav a {
+  text-decoration: none;  
+  color: #333;  
+  font-weight: bold;  
+}
+li {
+  position: relative;
+  /* Position relative for dropdown positioning */
+}
+.dropdown {
+  visibility: hidden; 
+  opacity: 0; 
+  position: absolute;
+  top: 100%;
+  left: -15px;  
+  padding: 0;
+  margin: 0;
+  z-index: 9999; 
+  transition: visibility 0s, opacity 0.2s linear;
+}
+.dropdown-container {
+  display: flex;
+  flex-direction: row;
+}
+
+li:hover .dropdown {
+  visibility: visible;  
+  opacity: 1;  
+}
+
+.dropdown li {
+  display: block;  
+}
+
+.dropdown {
+  display: flex;  
+  flex-direction: column; 
+}
+.dropdown-item{
+  padding: 0.25rem;
+}
+
+.header-buttons {
+  display: flex;  
+  align-items: center;  
+  height: 30px;  
+}
+.inner-container {
+  position: relative;  
+}
+.hamburger-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.line {
+  height: 3px;
+  width: 30px;
+  background-color: black;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+}
+
+
+
+.getAccess-button {
+  position: relative;  
+  background: #CE0101; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 80px;  
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  overflow: hidden;  
+}
+
+/* Diagonal line effect */
+.getAccess-button::before {
+  content: '';
+    position: absolute;
+    top: 50%;
+    /* Position vertically centered */
+    left: 50%;
+    /* Position horizontally centered */
+    width: 150%;
+    /* Expand for diagonal line */
+    height: 10%;
+    /* Expand for diagonal line */
+    background: white;
+    /* White color for the line */
+    transform: translate(-50%, -50%) rotate(340deg);
+    /* Center and rotate */
+    filter: blur(4px);
+    /* Apply blur effect */
+    z-index: 0;
+    /* Send it behind the button */
+}
+
+/* Style for the button text */
+.getAccess-button span {
+  position: relative;
+  /* Positioning for text visibility */
+  z-index: 1;
+  /* Ensure text is on top of the line */
+}
+
+/* Optional Hover Effect */
+.getAccess-button:hover {
+  background: #b00000;
+  /* Darker red on hover */
+}
+
+.footer-container{
+  background-color: #141414;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  min-height: 10vh;  
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  
+  .header-container img {
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  .body-container{
+    padding: 20px;
+  }
+    .header-nav {
+      display: flex;
+      position: absolute;      
+      flex-direction: column;      
+      top: 40px;     
+      left: 0;      
+      width: 100%;           
+    }
+    
+  .header-buttons{
+    display:none
+  }
+
+  .header-nav.open {
+    display: none;    
+    /* Show nav when open */
+  }
+  .dropdown {
+      display: flex;
+      flex-direction: row; 
+    
+  }
+.dropdown-item {  
+  flex-direction: row; 
+  right: 90px;
+ 
+}
+
+  .hamburger-icon {
+    display: flex;  
+    padding-right: 10px;      
+    /* Show hamburger menu */
+  }
+
+  /* Optional: Animation for active hamburger lines */
+  .line.active {
+    background-color: red;
+    /* Change color when active */
   }
 }
