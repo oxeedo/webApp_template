@@ -15,20 +15,26 @@ const Header = () => {
     <header className="header-container">
       <img src={logo} alt="Company Logo" />
       <div className="hamburger-icon" onClick={toggleMenu}>
-        {/* Hamburger icon (three lines) */}
-        <div className={`line ${isMenuOpen ? "active" : ""}`}></div>
-        <div className={`line ${isMenuOpen ? "active" : ""}`}></div>
-        <div className={`line ${isMenuOpen ? "active" : ""}`}></div>
+        {isMenuOpen ? (
+          // Close icon (when the menu is open)
+          <>
+            <div className={`line ${isMenuOpen ? "active" : ""}`}></div>
+            <div className={`line ${isMenuOpen ? "active" : ""}`}></div>
+            <div className={`line ${isMenuOpen ? "active" : ""}`}></div>
+          </>
+        ) : (
+          // Replace with an icon/image if needed
+          // Hamburger icon (when the menu is closed)
+          <div className="close-icon">✖</div>
+        )}
       </div>
+
       <nav className={`header-nav ${isMenuOpen ? "open" : ""}`}>
-        <ul>
-          <li>
-            <a href="#home">Home</a>{" "}
-          </li>
-          <li className="dropdown-container">
+        <ul className="menu-item">
+          <li className="feature-dropdown">
             <a href="#home">Features</a>
             <IoIoArrowDown />
-            <ul class="dropdown">
+            <ul className="dropdown-menu">
               <li className="dropdown-item">
                 <a href="#feature1">Feature</a>
               </li>
@@ -41,15 +47,18 @@ const Header = () => {
             </ul>
           </li>
           <li>
-            <a href="#home">About us</a>
+            <a href="#about">About us</a>
+          </li>
+          <li>
+            <a href="#faqs">FAQs</a>
           </li>
         </ul>
-      </nav>
-      <div className="header-buttons">
-        <div className="inner-container">
-          <button className="getAccess-button">Get Access</button>
+        <div className="header-buttons">
+          <div className="inner-container">
+            <button className="getAccess-button">Get Access</button>
+          </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };
